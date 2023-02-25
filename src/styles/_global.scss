@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    overflow-x: hidden !important;
+    scroll-behavior: smooth;
+    width: 100vw;
+}
+
+body {
+    position: relative;
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100%;
+    background-color: var(--white);
+    overflow-x: clip;
+}
+
+.container {
+    width: 100%;
+    max-width: $containerWidth;
+    padding: 0 1.875rem;
+    margin: 0 auto;
+
+    &.nopadMob {
+        @include breakpoint(tablet) {
+            padding: 0 !important;
+        }
+    }
+}
+
+ul {
+    list-style: none;
+}

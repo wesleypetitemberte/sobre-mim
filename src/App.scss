@@ -1,0 +1,15 @@
+$author: "Wesley Petitemberte";
+$version: "v1.0.0";
+
+//Paths
+$fontsSRC: "/fonts/";
+$imgSRC: "/img/";
+
+//Imports
+@import "styles/mixins";
+@import "styles/variables";
+@import "styles/fonts";
+@import "styles/global";
+
+//Components
+@import "components/CarDetails/car-details";

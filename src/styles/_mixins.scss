@@ -1,0 +1,68 @@
+@mixin breakpoint($breakpoint, $break: null) {
+    @if $break != null {
+        $mediaVal: $breakpoint;
+
+        @each $type, $value in $breakpoints {
+            @if map-has-key($value, $breakpoint) {
+                $mediaVal: map-get($value, $breakpoint);
+            }
+        }
+
+        @media screen and (#{$break}-width: #{$mediaVal}) {
+            @content;
+        }
+    } @else {
+        @each $type, $value in $breakpoints {
+            @if map-has-key($value, $breakpoint) {
+                @media screen and (#{$type}-width: #{map-get($value, $breakpoint)}) {
+                    @content;
+                }
+            }
+        }
+    }
+}
+
+@function lineHeight($fontSize, $lineHeight) {
+    @return #{$fontSize}/#{$lineHeight};
+}
+
+@mixin bgGadiente($color1: "#00B5AD", $color2: "#038983") {
+    background: linear-gradient(295.22deg, $color1 50%, $color2 83.99%);
+}
+
+@function strip-unit($value) {
+    @return $value / ($value * 0 + 1);
+}
+
+// $max_font: 22px;
+
+@mixin fluid-type($min_font, $max-font-size) {
+    $min_width: 1024px;
+    $max_width: 1920px;
+    // $min_font: 14px;
+
+    $u1: unit($min_width);
+    $u2: unit($max_width);
+    $u3: unit($min_font);
+    $u4: unit($max-font-size);
+
+    @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+        & {
+            font-size: $min_font;
+            @media screen and (min-width: $min_width) {
+                font-size: calc(
+                    #{$min_font} + #{strip-unit($max-font-size - $min_font)} *
+                        (
+                            (100vw - #{$min_width}) / #{strip-unit(
+                                    $max_width - $min_width
+                                )}
+                        )
+                ) !important;
+            }
+
+            @media screen and (min-width: $max_width) {
+                font-size: $max-font-size;
+            }
+        }
+    }
+}
