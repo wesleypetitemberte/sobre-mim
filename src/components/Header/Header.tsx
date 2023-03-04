@@ -1,14 +1,14 @@
-type CarDetailsProps = {
+type HeaderProps = {
     marca: string;
     modelo: string;
     km: number;
 };
 
-export default function CarDetails(props: CarDetailsProps) {
+export default function Header(props: HeaderProps) {
     const { marca, modelo, km } = props;
 
     return (
-        <section className="car-details container">
+        <section className="header container">
             <h2>{marca}</h2>
             <ul>
                 <li>Modelo: {modelo}</li>

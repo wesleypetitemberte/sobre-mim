@@ -1,30 +1,29 @@
-import "./App.scss";
-import { useState } from "react";
+import "./app.scss";
 
 //Components
-import CarDetails from "./components/CarDetails/CarDetails";
+import Header from "./components/Header/Header";
 
 //Imagens
 //import logo from "./logo.svg";
 
 export default function App() {
-    const cars = [
+    const links = [
         { id: 1, marca: "GM", modelo: "Corsa", km: 320 },
         { id: 2, marca: "VW", modelo: "Gol", km: 240 },
         { id: 3, marca: "Ford", modelo: "Ka", km: 170 },
     ];
 
     return (
-        <div className="App">
+        <div className="header">
             {/*<img src={logo} className="App-logo" alt="logo" />*/}
 
             {/*Tarefa 4*/}
-            {cars.map((car) => (
-                <CarDetails
-                    key={car.id}
-                    marca={car.marca}
-                    modelo={car.modelo}
-                    km={car.km}
+            {links.map((link) => (
+                <Header
+                    key={link.id}
+                    marca={link.marca}
+                    modelo={link.modelo}
+                    km={link.km}
                 />
             ))}
         </div>
