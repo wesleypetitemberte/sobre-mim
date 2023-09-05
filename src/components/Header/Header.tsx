@@ -1,19 +1,12 @@
 type HeaderProps = {
-    marca: string;
-    modelo: string;
-    km: number;
+    name: string;
+    url: string;
 };
 
 export default function Header(props: HeaderProps) {
-    const { marca, modelo, km } = props;
+    const { name, url } = props;
 
     return (
-        <section className="header container">
-            <h2>{marca}</h2>
-            <ul>
-                <li>Modelo: {modelo}</li>
-                <li>Kilometragem: {km}</li>
-            </ul>
-        </section>
+        <li><a href={url}>{name}</a></li>
     );
 }

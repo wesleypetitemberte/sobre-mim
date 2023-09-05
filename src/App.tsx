@@ -4,28 +4,35 @@ import "./app.scss";
 import Header from "./components/Header/Header";
 
 //Imagens
-//import logo from "./logo.svg";
+import logo from "./images/logo.png";
 
 export default function App() {
     const links = [
-        { id: 1, marca: "GM", modelo: "Corsa", km: 320 },
-        { id: 2, marca: "VW", modelo: "Gol", km: 240 },
-        { id: 3, marca: "Ford", modelo: "Ka", km: 170 },
+        { id: 1, name: "Home", url: "/" },
+        { id: 2, name: "Sobre", url: "/sobre" },
+        { id: 3, name: "Contato", url: "/contato" },
     ];
 
     return (
-        <div className="header">
-            {/*<img src={logo} className="App-logo" alt="logo" />*/}
-
-            {/*Tarefa 4*/}
-            {links.map((link) => (
-                <Header
-                    key={link.id}
-                    marca={link.marca}
-                    modelo={link.modelo}
-                    km={link.km}
-                />
-            ))}
-        </div>
+        <>
+            <header className="header">
+                <div className="container">
+                    <a className="logo" href="/">
+                        <img src={logo} alt="logo" />
+                    </a>
+                    <nav className="menu">
+                        <ul>
+                            {links.map((link) => (
+                                <Header
+                                    key={link.id}
+                                    name={link.name}
+                                    url={link.url}
+                                />
+                            ))}
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+        </>
     );
 }
